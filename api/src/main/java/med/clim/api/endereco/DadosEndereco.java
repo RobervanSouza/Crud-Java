@@ -1,4 +1,20 @@
 package med.clim.api.endereco;
 
-public record DadosEndereco(String bairro, String logradouro, String cep, String cidade, String uf, String complemento, String numero ) {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+
+public record DadosEndereco(
+        @NotBlank
+        String bairro,
+        @NotBlank
+        String logradouro,
+        @NotBlank
+        @Pattern(regexp = "\\d{8}")
+        String cep,
+        @NotBlank
+        String cidade,
+        @NotBlank
+        String uf,
+        String complemento,
+        String numero ) {
 }
