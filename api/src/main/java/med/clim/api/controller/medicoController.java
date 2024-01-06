@@ -2,10 +2,7 @@ package med.clim.api.controller;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import med.clim.api.medico.DadosCadastro;
-import med.clim.api.medico.DadosMedicos;
-import med.clim.api.medico.Medico;
-import med.clim.api.medico.MedicoRepository;
+import med.clim.api.medico.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,5 +26,33 @@ public class medicoController {
     public Page<DadosMedicos> listar(@PageableDefault(size = 10, sort= {"nome"}) Pageable paginacao){
         return repository.findAll(paginacao).map(DadosMedicos::new);
     }
+
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody @Valid DadosAtualizar dados){
+        var medico = repository.getReferenceById(dados.id());
+        medico.atualizarInformacoes(dados);
+
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

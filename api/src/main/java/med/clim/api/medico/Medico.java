@@ -36,4 +36,17 @@ public class Medico {
         this.telefone = dados.telefone();
 
     }
+
+    public void atualizarInformacoes(DadosAtualizar dados) {
+        if(dados.nome() != null){
+        this.nome = dados.nome();
+        }
+        if(dados.teleforne() != null){
+            this.telefone = dados.teleforne();
+        }
+        if(dados.endereco() != null){
+            this.endereco.atualizarInformacoes(dados.endereco());
+        }
+
+    }
 }
