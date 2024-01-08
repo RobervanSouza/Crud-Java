@@ -28,6 +28,7 @@ public class Medico {
     private Endereco endereco;
 
     public Medico(DadosCadastro dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.crm = dados.crm();
         this.email = dados.email();
@@ -37,6 +38,7 @@ public class Medico {
 
     }
 
+    private Boolean ativo;
     public void atualizarInformacoes(DadosAtualizar dados) {
         if(dados.nome() != null){
         this.nome = dados.nome();
@@ -48,5 +50,9 @@ public class Medico {
             this.endereco.atualizarInformacoes(dados.endereco());
         }
 
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }
